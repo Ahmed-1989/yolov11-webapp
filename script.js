@@ -19,7 +19,11 @@ async function loadModel() {
 loadModel();
 
 // Access the camera
-navigator.mediaDevices.getUserMedia({ video: true })
+navigator.mediaDevices.getUserMedia({
+  video: {
+    facingMode: { exact: "environment" }
+  }
+})
     .then((stream) => {
         video.srcObject = stream;
         video.onloadedmetadata = () => {
